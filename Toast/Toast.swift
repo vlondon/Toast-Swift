@@ -588,15 +588,19 @@ public struct ToastStyle {
      
     */
     public var horizontalPadding: CGFloat = 10.0
-    
+
     /**
-     The spacing from the vertical edge of the toast view to the content. When a title
-     is present, this is also used as the padding between the title and the message.
+     When a title is present this is used as the padding between the title and the message.
      Default is 10.0. On iOS11+, this value is added added to the `safeAreaInset.top`
      and `safeAreaInsets.bottom`.
     */
     public var verticalPadding: CGFloat = 10.0
-    
+
+    /**
+     The spacing from the vertical edge of the toast view to the content.
+    */
+    public var verticalMargin: CGFloat = 10.0
+
     /**
      The corner radius. Default is 10.0.
     */
@@ -753,8 +757,8 @@ public enum ToastPosition {
     case bottom
     
     fileprivate func centerPoint(forToast toast: UIView, inSuperview superview: UIView) -> CGPoint {
-        let topPadding: CGFloat = ToastManager.shared.style.verticalPadding + superview.csSafeAreaInsets.top
-        let bottomPadding: CGFloat = ToastManager.shared.style.verticalPadding + superview.csSafeAreaInsets.bottom
+        let topPadding: CGFloat = ToastManager.shared.style.verticalMargin + superview.csSafeAreaInsets.top
+        let bottomPadding: CGFloat = ToastManager.shared.style.verticalMargin + superview.csSafeAreaInsets.bottom
         
         switch self {
         case .top:
